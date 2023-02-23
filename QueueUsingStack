@@ -1,0 +1,32 @@
+public class QueueUsingStack<T> {
+    private Stack<T> inputStack = new Stack<>();
+    private Stack<T> outputStack = new Stack<>();
+
+    public void enqueue(T element) {
+        inputStack.push(element);
+    }
+
+    public T dequeue() {
+        if (outputStack.isEmpty()) {
+            transferElements();
+        }
+        return outputStack.pop();
+    }
+
+    public T peek() {
+        if (outputStack.isEmpty()) {
+            transferElements();
+        }
+        return outputStack.peek();
+    }
+
+    private void transferElements() {
+        while (!inputStack.isEmpty()) {
+            outputStack.push(inputStack.pop());
+        }
+    }
+
+    public boolean isEmpty() {
+        return inputStack.isEmpty() && outputStack.isEmpty();
+    }
+}
