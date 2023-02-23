@@ -1,0 +1,16 @@
+public static boolean isPalindrome(int num) {
+    if (num < 0) {
+        return false;
+    }
+
+    int reversedNum = 0;
+    int originalNum = num;
+
+    while (originalNum != 0) {
+        int remainder = originalNum % 10;
+        reversedNum = reversedNum * 10 + remainder;
+        originalNum /= 10;
+    }
+
+    return num == reversedNum;
+}
